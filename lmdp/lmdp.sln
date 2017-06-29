@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lmdp", "lmdp\lmdp.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lmdp.Tests", "lmdp.Tests\lmdp.Tests.csproj", "{2DEFC536-294C-44CA-8490-C49CB6852A33}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lmdp-client", "lmdp-client\lmdp-client.csproj", "{A9777B05-D70A-49BC-92BA-7DF715A71443}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2DEFC536-294C-44CA-8490-C49CB6852A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DEFC536-294C-44CA-8490-C49CB6852A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DEFC536-294C-44CA-8490-C49CB6852A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9777B05-D70A-49BC-92BA-7DF715A71443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9777B05-D70A-49BC-92BA-7DF715A71443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9777B05-D70A-49BC-92BA-7DF715A71443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9777B05-D70A-49BC-92BA-7DF715A71443}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
