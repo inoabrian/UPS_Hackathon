@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-export class Login{
-  email: string;
-  password: string;
-}
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +7,5 @@ export class Login{
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'The Last Mile Package Delivery';
-  login: Login = {
-    email: null,
-    password: null
-  };
+  title = 'The Last Mile Delivery System';
 } 
