@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
 
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -43,15 +44,10 @@
       -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Log Out</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+        <li>
+        <button (click)="toggleNotifications()" id="notificationsButton">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
         </li>
       </ul>
     </div>
@@ -60,6 +56,8 @@
   <!-- /.container-fluid -->
 </nav>
 
+
+<app-notifications [@slideInOut]="notificationsState"></app-notifications>
 
 <div id="page-wrapper" [ngClass]="{'open': toggle}" style="padding-left:0px; margin-top:0%; height:90%;">
   <div id="content-wrapper" style="height:100%; margin-top:0%;">
