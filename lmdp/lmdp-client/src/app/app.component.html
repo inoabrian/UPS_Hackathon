@@ -60,5 +60,15 @@
   <!-- /.container-fluid -->
 </nav>
 
-  <app-login [appTitle]="title"></app-login>
+
+<div id="page-wrapper" [ngClass]="{'open': toggle}" style="padding-left:0px; margin-top:0%; height:90%;">
+  <div id="content-wrapper" style="height:100%; margin-top:0%;">
+    <div class="page-content" style="height:100%;">
+      <router-outlet></router-outlet>
+      <app-login [appTitle]="title"></app-login>
+    </div>
+  </div>
+</div>
+
+  <!--<app-login [appTitle]="title"></app-login>-->
 
