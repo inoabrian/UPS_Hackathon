@@ -9,9 +9,9 @@ namespace lmdp.Models
 {
     public class StopsContext
     { 
-        public const string CONNECTION_STRING_NAME = "Compose";
-        public const string DATABASE_NAME = "LMDP";
-        public const string USERS_COLLECTION_NAME = "Users";
+        public const string CONNECTION_STRING_NAME = "LMDP";
+        public const string DATABASE_NAME = "LMDPDB";
+        public const string USERS_COLLECTION_NAME = "users";
 
         // This is ok... Normally, they would be put into
         // an IoC container.

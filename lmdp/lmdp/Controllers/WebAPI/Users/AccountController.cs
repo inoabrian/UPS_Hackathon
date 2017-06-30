@@ -4,102 +4,76 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Mvc;
 using MongoDB.Driver;
 using M101DotNet.WebApp.Models;
 using M101DotNet.WebApp.Models.Account;
 using lmdp.Models;
+using System.Web.Http;
 
 namespace M101DotNet.WebApp.Controllers
 {
     [AllowAnonymous]
-    public class AccountController : Controller
+    [RoutePrefix("api/users")]
+    public class AccountController : ApiController
     {
         [HttpGet]
-        public ActionResult Login(string returnUrl)
+        [Route("Login/{userName}")]
+        public async Task<IHttpActionResult> Login(string userName)
         {
-            var model = new LoginModel
+            var context = new StopsContext();
+
+            User user = await context.Users.Find(X => X.username == userName).SingleOrDefaultAsync();
+
+            if (user.Id != null)
             {
-                ReturnUrl = returnUrl
+                return Ok(user);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        [Route("Register/{userName}/{email}")]
+        public async Task<IHttpActionResult> AddUser(string userName, string email)
+        {
+            var context = new StopsContext();
+            var user = new User
+            {
+                active = true,
+                email = email,
+                fname = "Test",
+                lname = "User",
+                username = userName
             };
 
-            return View(model);
-        }
+            await context.Users.InsertOneAsync(user);
 
-        [HttpPost]
-        public async Task<ActionResult> Login(LoginModel model)
-        {
-            if (!ModelState.IsValid)
+            if (user.Id != null)
             {
-                return View(model);
-            }
-
-            var userContext = new StopsContext();
-            var user = await userContext.Users.Find(x => x.Email == model.Email).SingleOrDefaultAsync();
-            if (user == null)
+                return Ok(user);
+            } else
             {
-                ModelState.AddModelError("Email", "Email address has not been registered.");
-                return View(model);
+                return BadRequest();
             }
-
-            var identity = new ClaimsIdentity(new[]
-                {
-                    new Claim(ClaimTypes.Name, user.Name),
-                    new Claim(ClaimTypes.Email, user.Email)
-                },
-                "ApplicationCookie");
-
-            var context = Request.GetOwinContext();
-            var authManager = context.Authentication;
-
-            authManager.SignIn(identity);
-
-            return Redirect(GetRedirectUrl(model.ReturnUrl));
-        }
-
-        [HttpPost]
-        public ActionResult Logout()
-        {
-            var context = Request.GetOwinContext();
-            var authManager = context.Authentication;
-
-            authManager.SignOut("ApplicationCookie");
-            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
-        public ActionResult Register()
+        [Route("Workload/{userName}")]
+        public async Task<IHttpActionResult> GetUser(string userName)
         {
-            return View(new RegisterModel());
-        }
 
-        [HttpPost]
-        public async Task<ActionResult> Register(RegisterModel model)
-        {
-            if (!ModelState.IsValid)
+            var context = new StopsContext();
+            var user = await context.Users.Find(X => X.username == userName).SingleOrDefaultAsync();
+            if (user != null)
             {
-                return View(model);
+                return Ok(user);
             }
-
-            var blogContext = new BlogContext();
-            var user = new User
+            else
             {
-                Name = model.Name,
-                Email = model.Email
-            };
-
-            await blogContext.Users.InsertOneAsync(user);
-            return RedirectToAction("Index", "Home");
-        }
-
-        private string GetRedirectUrl(string returnUrl)
-        {
-            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
-            {
-                return Url.Action("index", "home");
+                return BadRequest();
             }
-
-            return returnUrl;
         }
     }
 }

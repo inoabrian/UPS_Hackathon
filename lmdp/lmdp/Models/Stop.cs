@@ -13,5 +13,7 @@ namespace lmdp.Models
         public string streetPrefix { get; set; }
         public string streetPostfix { get; set; }
         public LocationCoordinate streetCoordinates { get; set; }
+        public int packageCount { get; set; }
+        public int stopNumber { get; set; }
     }
 }
