@@ -177,9 +177,13 @@
     <Compile Include="Controllers\WebAPI\LockerCodes\LockerCodesController.cs" />
     <Compile Include="Controllers\WebAPI\Notifications\NotificationsController.cs" />
     <Compile Include="Controllers\WebAPI\RecStops\RecStopsController.cs" />
+    <Compile Include="Controllers\WebAPI\Users\AccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeliveryStops.cs" />
+    <Compile Include="Models\LockerCode.cs" />
+    <Compile Include="Models\Stop.cs" />
     <Compile Include="Models\StopsContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
