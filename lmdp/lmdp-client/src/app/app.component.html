@@ -2,13 +2,6 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-        aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="#">{{title}}</a>
     </div>
 
@@ -42,6 +35,8 @@
         <li>
           <a href="javascript:void(0)">
             <div (click)="toggleNotifications()" id="notificationsButton">
+          <a href="#">
+            <button type='button' (click)="toggleNotifications()" id="notificationsButton" class='btn nav-button'>
               <span class="glyphicon glyphicon-menu-hamburger"></span>
             </div>
           </a>

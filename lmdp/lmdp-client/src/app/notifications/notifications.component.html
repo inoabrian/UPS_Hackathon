@@ -1,4 +1,4 @@
 <ul>
   <li *ngFor="let notification of notifications">{{ notification }}</li>
-  <li ng-show="!notifications.length">No Notifications</li>
+  <li *ngIf="notifications.length==0">No Notifications</li>
 </ul>
