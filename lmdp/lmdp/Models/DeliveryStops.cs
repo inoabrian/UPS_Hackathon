@@ -7,5 +7,8 @@ namespace lmdp.Models
 {
     public class DeliveryStops
     {
+        public int StopCount { get; set; }
+        public List<string>Stop {get;set;} 
+
     }
 }
