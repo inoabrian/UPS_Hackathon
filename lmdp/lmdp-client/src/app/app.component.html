@@ -2,12 +2,14 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">{{title}}</a>
+      <a class="navbar-brand" href="#/home">{{title}}</a>
+
+      <app-notifications [@slideInOut]="notificationsState"></app-notifications>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" style="display:none !important;">
+    <div class="hidden-lg hidden-md collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav hidden-lg hidden-md">
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
         <li class="dropdown">
@@ -45,9 +47,6 @@
   </div>
   <!-- /.container-fluid -->
 </nav>
-
-
-<app-notifications [@slideInOut]="notificationsState"></app-notifications>
 
 <div id="page-wrapper" [ngClass]="{'open': toggle}" style="padding-left:0px; margin-top:0%; height:90%;">
   <div id="content-wrapper" style="height:100%; margin-top:0%;">

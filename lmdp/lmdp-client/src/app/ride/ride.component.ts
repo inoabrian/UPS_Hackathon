@@ -1,17 +1,16 @@
 // tslint:disable:import-spacing
 import { Component, OnInit }  from '@angular/core';
 import { Input }              from '@angular/core';
-import { DashboardService }   from './dashboard.service';
+import { DashboardService }   from '../dashboard/dashboard.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-ride',
+  templateUrl: './ride.component.html',
+  styleUrls: ['./ride.component.css'],
   providers: [DashboardService]
 })
 
- export class DashboardComponent implements OnInit {
-
+ export class RideComponent implements OnInit {
   // tslint:disable-next-line:typedef-whitespace
   private user : any = {};
   private userLatitude: any;
@@ -20,6 +19,20 @@ import { DashboardService }   from './dashboard.service';
   private mymap: any = {};
 
   private markers: any = [];
+
+  public stops : any = [
+    {streetName: "435 Ridge Rd", lat : 41.0664322, lon : -74.1688673, packageCount: 10, stopNumber:1 },
+    {streetName: "429 Ridge Rd", lat : 41.0667077, lon : -74.1687591, packageCount: 10, stopNumber:2 },
+    {streetName: "Ridge Rd", lat : 41.0688464, lon : -74.1676738, packageCount: 10, stopNumber:3 },
+    {streetName: "553 Holly Ct", lat : 41.0690594, lon : -74.1676639, packageCount: 10, stopNumber:4 },
+    {streetName: "3689-4007 Mark Twain Way", lat : 41.0709473, lon : -74.1673167, packageCount: 10, stopNumber:5 },
+    {streetName: "3689-4007 Mark Twain Way", lat : 41.0706156, lon : -74.1668869, packageCount: 10, stopNumber:6 },
+    {streetName: "3689-4007 Mark Twain Way", lat : 41.0702085, lon : -74.1658508, packageCount: 10, stopNumber:7 },
+    {streetName: "2901-3069 Mark Twain Way", lat : 41.0696127, lon : -74.1641013, packageCount: 10, stopNumber:8 },
+    {streetName: "3703 Melville Ct", lat : 41.0690303, lon : -74.1638153, packageCount: 10, stopNumber:9 },
+    {streetName: "2901 Mark Twain Way", lat : 41.0681626, lon : -74.1636822, packageCount: 10, stopNumber:10 },
+    {streetName: "3509 Whittier Ct", lat : 41.0679238, lon : -74.163412, packageCount: 10, stopNumber: 11}
+  ];
 
   constructor(private dashService: DashboardService) {
 
@@ -50,17 +63,20 @@ import { DashboardService }   from './dashboard.service';
   // }
 
    setupMap() {
-      this.mymap = window['L'].map('map').setView([this.userLatitude, this.userLongitude], 13);
 
-      var polylinePoints = [
+        var polylinePoints = [
         new window['L'].LatLng(this.userLatitude, this.userLongitude),
-        new window['L'].LatLng(41.0674681,-74.1754413),
-        new window['L'].LatLng(41.0675896,-74.1744839),
-        new window['L'].LatLng(41.0687822,-74.1727037),
-        new window['L'].LatLng(41.0792658,-74.1603194),
-        new window['L'].LatLng(41.082689,-74.1501626),
-        new window['L'].LatLng(41.0823288,-74.1504008),
-        new window['L'].LatLng(41.08299,-74.150441)
+        new window['L'].LatLng(41.0664322,-74.1688673),
+        new window['L'].LatLng(41.0667077,-74.1687591),
+        new window['L'].LatLng(41.0688464,-74.1676738),
+        new window['L'].LatLng(41.0690594,-74.1676639),
+        new window['L'].LatLng(41.0709473,-74.1673167),
+        new window['L'].LatLng(41.0706156,-74.1668869),
+        new window['L'].LatLng(41.0702085,-74.1658508),
+        new window['L'].LatLng(41.0696127,-74.1641013),
+        new window['L'].LatLng(41.0690303,-74.1638153),
+        new window['L'].LatLng(41.0681626,-74.1636822),
+        new window['L'].LatLng(41.0679238,-74.163412)
       ];
 
       var polylineOptions = {
@@ -71,7 +87,7 @@ import { DashboardService }   from './dashboard.service';
 
       var polyline = new window['L'].Polyline(polylinePoints, polylineOptions);
 
-
+    this.mymap = window['L'].map('map').setView([this.userLatitude, this.userLongitude], 13);
       const string1 = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?';
       const string2 = 'access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
 
@@ -83,11 +99,12 @@ import { DashboardService }   from './dashboard.service';
         id: 'mapbox.streets'
       }).addTo(this.mymap);
 
-      // window['L'].marker([51.5, -0.09]).addTo(mymap)
-      //   .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
       this.mymap.addLayer(polyline);
 
-      window['L'].circle([this.userLatitude, this.userLongitude], 500, {
+      // window['L'].marker([51.5, -0.09]).addTo(mymap)
+      //   .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
+
+      window['L'].circle([41.0706156,-74.1668869], 500, {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.5
@@ -134,7 +151,7 @@ import { DashboardService }   from './dashboard.service';
 
     this.markers.push(
       window['L']
-      .marker([stopInfo.streetCoordinates.lat, stopInfo.streetCoordinates.lon])
+      .marker([stopInfo.lat, stopInfo.lon])
     );
 
     this.markers[0]

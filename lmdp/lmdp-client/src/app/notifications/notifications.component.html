@@ -1,4 +1,38 @@
-<ul>
-  <li *ngFor="let notification of notifications">{{ notification }}</li>
-  <li *ngIf="notifications.length==0">No Notifications</li>
-</ul>
+<div class="col-lg-12">
+  <h3>
+    Notifications:
+  </h3>
+</div>
+
+
+<div class="col-lg-12" style="padding:0px;">
+  <div class="list-group" *ngFor="let notification of notifications">
+    <a href="javascript:void(0)" class="list-group-item active"  routerLink="/ride">
+      <h4 class="list-group-item-heading">{{ notification.address }}</h4>
+      <p class="list-group-item-text">{{ notification.duration }}</p>
+    </a>
+  </div>
+  
+  <!--<ul style="padding:0px;">
+    <li *ngFor="let notification of notifications">
+      <div class="col-lg-12" style="padding:0px; padding-left: 10px; border-top: 1px solid black; border-bottom: 1px solid black;">
+        {{ notification.title }}
+        
+        <br/>
+        
+        {{ notification.address }}
+        
+        <br/>
+
+        {{ notification.time }}
+        
+        <br/>
+        
+        {{ notification.duration }}
+        <br/>
+        <div class="btn btn-default"> show</div>
+      </div>
+    </li>
+    <li *ngIf="notifications.length==0">No Notifications</li>
+  </ul>-->
+</div>
