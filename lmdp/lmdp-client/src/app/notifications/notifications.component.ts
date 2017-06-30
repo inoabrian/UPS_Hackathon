@@ -9,6 +9,8 @@ export class NotificationsComponent implements OnInit {
 
   constructor() { }
 
+  notifications = [];
+
   ngOnInit() {
   }
 
