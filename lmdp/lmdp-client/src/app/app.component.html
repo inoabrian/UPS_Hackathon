@@ -1,5 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
 <nav class="navbar navbar-default">
@@ -44,14 +46,18 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Log Out</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+          <a href="#" >
+            <button (click)="toggleNotifications()" class="hamburger">
+              <span>toggle menu</span>
+            </button>
+          </a>
+          <!--<ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Separated link</a></li>
-          </ul>
+          </ul>-->
         </li>
       </ul>
     </div>
@@ -60,5 +66,8 @@
   <!-- /.container-fluid -->
 </nav>
 
-  <app-login [appTitle]="title"></app-login>
+<app-login [appTitle]="title"></app-login>
+
+
+<app-notifications [@slideInOut]="notificationsState"></app-notifications>
 
