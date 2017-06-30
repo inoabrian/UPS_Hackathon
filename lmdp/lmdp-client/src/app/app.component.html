@@ -1,11 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
-
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.2.2/web-animations.min.js"></script>
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin-bottom: 0px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -21,7 +14,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" style="display:none !important;">
         <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
         <li class="dropdown">
@@ -45,12 +38,12 @@
       </form> 
       -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log Out</a></li>
+        <li><a href="javascript:void(0)" class="hidden">Log Out</a></li>
         <li>
-          <a href="#">
-            <button (click)="toggleNotifications()" id="notificationsButton">
+          <a href="javascript:void(0)">
+            <div (click)="toggleNotifications()" id="notificationsButton">
               <span class="glyphicon glyphicon-menu-hamburger"></span>
-            </button>
+            </div>
           </a>
         </li>
       </ul>
@@ -67,7 +60,6 @@
   <div id="content-wrapper" style="height:100%; margin-top:0%;">
     <div class="page-content" style="height:100%;">
       <router-outlet></router-outlet>
-      <app-login [appTitle]="title"></app-login>
     </div>
   </div>
 </div>

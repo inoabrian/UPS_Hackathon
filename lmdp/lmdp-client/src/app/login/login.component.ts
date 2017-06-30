@@ -1,61 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 
-//import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  template: `
-      <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 well">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-          <div class="col-sm-9">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-          <div class="col-sm-9">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-9">
-            <div class="checkbox">
-              <label>
-            <input type="checkbox"> Remember me
-          </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-9">
-          <a class="btn btn-default" routerLink="/dashboard">Dashboard</a>
-          </div>
-        </div>
-        <br />
-        <div class="form-group">
-          <div class="col-sm-offset-1 col-sm-10">
-            Want to make last mile deliveries for UPS?
-            <a href="#">Apply now</a>.
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-    <router-outlet></router-outlet>
-  `
+  styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent implements OnInit {
   constructor () { }
 
-  @Input()
-  appTitle: string = "";
+  public appTitle:string = "The Last Mile Delivery System";
+
+  // @Input()
+  // appTitle: string = "";
 
   ngOnInit() {
   }

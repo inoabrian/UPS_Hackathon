@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app-routing.module'; 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component'; 
 import { NotificationsComponent } from './notifications/notifications.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 
@@ -14,7 +15,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
     AppComponent,
     LoginComponent,
     NotificationsComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,
